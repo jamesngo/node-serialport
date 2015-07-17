@@ -262,6 +262,7 @@ function SerialPortFactory(_spfOptions) {
     }
 
     this.options.baudRate = options.baudRate || options.baudrate || _options.baudrate;
+    this.options.bufferSize = options.bufferSize || options.buffersize || _options.buffersize;
 
     factory.SerialPortBinding.update(this.fd, this.options, function (err) {
       if (err) {
