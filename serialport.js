@@ -336,7 +336,7 @@ function SerialPortFactory(_spfOptions) {
       // Grab another reference to the pool in the case that while we're in the
       // thread pool another read() finishes up the pool, and allocates a new
       // one.
-      var toRead = Math.max(self.pool.length - self.pool.used, ~~self.bufferSize);
+      var toRead = Math.min(self.pool.length - self.pool.used, ~~self.bufferSize);
       var start = self.pool.used;
 
       function afterRead(err, bytesRead, readPool, bytesRequested) {
