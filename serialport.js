@@ -261,12 +261,12 @@ function SerialPortFactory(_spfOptions) {
       return;
     }
 
-    this.parser = options.parser || _options.parser;
+    this.options.parser = options.parser || _options.parser;
     this.options.baudRate = options.baudRate || options.baudrate || _options.baudrate;
     this.options.bufferSize = options.bufferSize || options.buffersize || _options.buffersize;
     
     this.dataCallback = options.dataCallback || function (data) {
-      opts.parser(self, data);
+      this.options.parser(self, data);
     };
 
     factory.SerialPortBinding.update(this.fd, this.options, function (err) {
